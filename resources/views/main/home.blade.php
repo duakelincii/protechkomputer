@@ -184,13 +184,13 @@
                             <div class="owl-carousel" data-plugin-options='{"items": 4, "singleItem": false, "pagination": true}'>
                                 @foreach($product as $pro)
                                 <div class="item">
-                                    <figure class="animated-overlay overlay-alt"> <img alt="Nexus" src="{{asset('images')}}/{{$pro->product_image}}" /> <a href="portfolio-single.html" class="link-to-post"></a>
+                                    <figure class="animated-overlay overlay-alt"> <img alt="Nexus" src="{{asset('images')}}/{{$pro->product_image}}"style="width:500px;height:200px;"/> <a href="{{url('product-detail/')}}/{{$pro->id}}" class="link-to-post"></a>
                                     <figcaption>
                                         <div class="thumb-info thumb-info-v2"><i class="fa fa-angle-right"></i></div>
                                     </figcaption>
                                     </figure>
                                     <div class="v-portfolio-item-info">
-                                    <h3 class="v-portfolio-item-title"> <a href="portfolio-single.html" class="link-to-post">{{$pro->product_name}}</a> </h3>
+                                    <h3 class="v-portfolio-item-title"> <a href="{{url('product-detail/')}}/{{$pro->id}}" class="link-to-post">{{$pro->product_name}}</a> </h3>
                                     </div>
                                 </div>
                                 @endforeach
