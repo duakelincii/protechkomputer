@@ -45,13 +45,15 @@
             <table id="example1" class="table table-bordered table-striped">
               <thead>
               <tr>
-                <th>mission</th>
+                <th>ID</th>
+                <th>Mission</th>
                 <th>Actions</th>
               </tr>
               </thead>
               <tbody>
                 @foreach ($mission as $mis)
               <tr>
+                <td>{{$mis->id}}</td>
                 <td>{!!$mis['mission']!!}</td>
               <td width="120">                      
                 <a href="{{url('admin/edit-mission')}}/{{$mis->id}}" class="btn btn-small"><i class="fa fa-fw fa-edit"></i> Edit</a>
@@ -62,6 +64,7 @@
               </tbody>
               <tfoot>
               <tr>
+                <th>ID</th>
                 <th>mission</th>
                 <th>Actions</th>
               </tr>

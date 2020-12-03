@@ -27,7 +27,7 @@
                         <div class="gallery-slider" data-transition="slide" data-autoplay="no">
                             <ul class="slides">
                                 <li>
-                                    <img alt="Nexus" src='{{asset('assets/main/img/static/24x.jpg')}}' width='1280' height='720' />
+                                    <img alt="Nexus" src='{{asset('assets/main/img/contact.jpg')}}' style="width:1280px;height:350px" />
                                 </li>
                                 
                             </ul>
