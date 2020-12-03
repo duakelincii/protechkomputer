@@ -1,6 +1,6 @@
 @extends('layout.admin_layout')
 @section('main_content')
-@section('title','About us')
+@section('title','About us (HomePage)')
 @section('body','hold-transition skin-blue sidebar-mini')
 <div class="wrapper">
     <x-admin_header />

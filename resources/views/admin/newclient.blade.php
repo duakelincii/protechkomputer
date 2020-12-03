@@ -22,7 +22,7 @@
         <div class="box box-primary">
           <div class="box-header with-border">
             <h3 class="box-title">New Client</h3>
-            <a href="{{url()->previous()}}"> <button type="button" class="btn btn-primary" style="float:right">Cancel</button> </a>
+            <a href="{{url('/admin/client')}}"> <button type="button" class="btn btn-primary" style="float:right">Cancel</button> </a>
 
           </div>
           <!-- /.box-header -->
@@ -33,13 +33,22 @@
               <div class="form-group">
                 <label for="name_client">Client Name</label>
               <input type="text" class="form-control" id="name_client" placeholder="Enter Client Name" value="" name="client_name">
+              @if($errors->has('client_name'))
+                <span class="text-danger">{{$errors->first('client_name')}}</span>
+              @endif
               </div>
               <div class="form-group">
                 <label for="url_client">Client URL </label>
                 <input type="text" class="form-control" id="url_client" placeholder="Enter Client URL" value="" name="client_url">
+                @if($errors->has('client_url'))
+                <span class="text-danger">{{$errors->first('client_url')}}</span>
+              @endif
             </div>
               <div class="form-group">
                 <label for="logo_client">File input</label>
+                @if($errors->has('client_logo'))
+                <br><span class="text-danger">{{$errors->first('client_logo')}}</span><br>
+              @endif
                 <input type="file" id="logo_client" name="client_logo" onchange="previewFile(this)">
                 <img id="previewIMG" alt="preview image" style="max-width: 200px;margin-top:20px"/>
               </div>

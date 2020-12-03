@@ -79,6 +79,9 @@ class ProductController extends Controller
 
     public function updateProductImage(Request $req)
     {
+        $req->validate([
+            'product_image' => 'required|mimes:jpg,jpeg,png |max:2048'
+        ]);
         $product = Product::find($req->id);
         unlink(public_path('images').'/'.$product->product_image);
         $image = $req->file('product_image');

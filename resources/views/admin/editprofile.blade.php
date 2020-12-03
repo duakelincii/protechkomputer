@@ -22,7 +22,7 @@
         <div class="box box-primary">
           <div class="box-header with-border">
             <h3 class="box-title">Edit Profile</h3>
-            <a href="{{url()->previous()}}"> <button type="button" class="btn btn-primary" style="float:right">Cancel</button> </a>
+            <a href="{{url('/admin/dashboard')}}"> <button type="button" class="btn btn-primary" style="float:right">Cancel</button> </a>
 
           </div>
           <!-- /.box-header -->
@@ -34,11 +34,17 @@
             <div class="box-body">
               <div class="form-group">
                 <label for="exampleInputEmail1">Name</label>
-              <input type="text" class="form-control"name="admin_name" id="exampleInputEmail1" placeholder="Enter name" value="{{Session::get('admin')['admin_name']}}" required="required">
+              <input type="text" class="form-control"name="admin_name" id="exampleInputEmail1" placeholder="Enter name" value="{{Session::get('admin')['admin_name']}}">
+              @if($errors->has('admin_name'))
+                <span class="text-danger">{{$errors->first('admin_name')}}</span>
+              @endif
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" name="admin_email" id="exampleInputEmail1" placeholder="Enter email" value="{{Session::get('admin')['admin_email']}}" required="required">
+                <input type="email" class="form-control" name="admin_email" id="exampleInputEmail1" placeholder="Enter email" value="{{Session::get('admin')['admin_email']}}">
+                @if($errors->has('admin_email'))
+                <span class="text-danger">{{$errors->first('admin_email')}}</span>
+              @endif
               </div>
             </div>
             <!-- /.box-body -->

@@ -40,6 +40,7 @@
               <tr>
                 <th>Category ID</th>
                 <th>Category Name</th>
+                <th>Action</th>
               </tr>
               </thead>
               <tbody>
@@ -57,6 +58,7 @@
               <tr>
                 <th>Category ID</th>
                 <th>Category Name</th>
+                <th>Action</th>
               </tr>
               </tfoot>
             </table>

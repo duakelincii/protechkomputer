@@ -22,7 +22,7 @@
         <div class="box box-primary">
           <div class="box-header with-border">
           <h3 class="box-title">Edit Client Logo</h3>
-          <a href="{{url()->previous()}}"> <button type="button" class="btn btn-primary" style="float:right">Cancel</button> </a>
+          <a href="{{url('/admin/client')}}"> <button type="button" class="btn btn-primary" style="float:right">Cancel</button> </a>
 
           </div>
           <!-- /.box-header -->
@@ -34,6 +34,9 @@
             <div class="box-body">
               <div class="form-group">
                 <label for="logo_client">File input</label>
+                @if($errors->has('client_logo'))
+                <br><span class="text-danger">{{$errors->first('client_logo')}}</span> <br>
+              @endif
               <input type="file" id="logo_client" name="client_logo" onchange="previewFile(this)">
               <img id="previewIMG" alt="preview image" src="{{asset('images')}}/{{$client->client_logo}}" style="max-width: 200px;margin-top:20px"/>
               </div>

@@ -20,6 +20,11 @@ class ClientController extends Controller
     }
     public function store(Request $req)
     {
+        $req->validate([
+            'client_name'=> 'required',
+            'client_url' => 'required',
+            'client_logo' => 'required|mimes:jpg,jpeg,png |max:2048'
+        ]);
         $image = $req->file('client_logo');
         $imageName = time().'.'.$image->extension();
         $image->move(public_path('images'),$imageName);
@@ -40,6 +45,10 @@ class ClientController extends Controller
 
     public function updateClient(Request $req)
     {
+        $req->validate([
+            'client_name'=> 'required',
+            'client_url' => 'required',
+        ]);
         $client = Client::find($req->id);
         $client->client_name = $req->client_name;
         $client->client_url = $req->client_url;
@@ -55,6 +64,9 @@ class ClientController extends Controller
 
     public function updateClientImage(Request $req)
     {
+        $req->validate([
+            'client_logo' => 'required|mimes:jpg,jpeg,png |max:2048'
+        ]);
         $client = Client::find($req->id);
         unlink(public_path('images').'/'.$client->client_logo);
         $image = $req->file('client_logo');

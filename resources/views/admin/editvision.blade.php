@@ -22,7 +22,7 @@
         <div class="box box-primary">
           <div class="box-header with-border">
             <h3 class="box-title">Edit Vision</h3>
-            <a href="{{url()->previous()}}"> <button type="button" class="btn btn-primary" style="float:right">Cancel</button> </a>
+            <a href="{{url('/admin/vision')}}"> <button type="button" class="btn btn-primary" style="float:right">Cancel</button> </a>
 
           </div>
           <!-- /.box-header -->
@@ -34,6 +34,9 @@
             <div class="box-body">
               <div class="form-group">
                 <label for="editor1">Vision</label>
+                @if($errors->has('vision'))
+                <br><span class="text-danger">{{$errors->first('vision')}}</span><br>
+              @endif
                 <textarea id="editor1" name="vision" rows="10" cols="80">
                     {{$vision->vision}}
                 </textarea>

@@ -21,8 +21,8 @@
         <!-- general form elements -->
         <div class="box box-primary">
           <div class="box-header with-border">
-            <h3 class="box-title">Edit Profile</h3>
-            <a href="{{url()->previous()}}"> <button type="button" class="btn btn-primary" style="float:right">Cancel</button> </a>
+            <h3 class="box-title">Edit Password</h3>
+            <a href="{{url('/admin/dashboard')}}"> <button type="button" class="btn btn-primary" style="float:right">Cancel</button> </a>
 
             @if(Session::has('error'))
             <br><br>

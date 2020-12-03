@@ -22,7 +22,7 @@
         <div class="box box-primary">
           <div class="box-header with-border">
             <h3 class="box-title">Edit Customer Text</h3>
-            <a href="{{url()->previous()}}"> <button type="button" class="btn btn-primary" style="float:right">Cancel</button> </a>
+            <a href="{{url('/admin/customer')}}"> <button type="button" class="btn btn-primary" style="float:right">Cancel</button> </a>
 
           </div>
           <!-- /.box-header -->
@@ -35,8 +35,15 @@
               <div class="form-group">
                 <label for="name_customer">Name</label>
               <input type="text" class="form-control" id="name_customer" placeholder="Enter Big text" value="{{$customer->customer_name}}" name="customer_name">
+              @if($errors->has('customer_name'))
+              <span class="text-danger">{{$errors->first('customer_name')}}</span>
+            @endif
               </div>
               <div class="form-group">
+                <label for="editor1">Quote</label>
+                @if($errors->has('customer_quote'))
+                <br><span class="text-danger">{{$errors->first('customer_quote')}}</span> <br>
+              @endif
                 <textarea id="editor1" name="customer_quote" rows="10" cols="80">
                     {{$customer->customer_quote}}
                 </textarea>

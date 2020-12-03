@@ -1,6 +1,6 @@
 @extends('layout.admin_layout')
 @section('main_content')
-@section('title','Edit Carousel Image')
+@section('title','Edit About Us Image')
 @section('body','hold-transition skin-blue sidebar-mini')
 <div class="wrapper">
     <x-admin_header />
@@ -22,7 +22,7 @@
         <div class="box box-primary">
           <div class="box-header with-border">
           <h3 class="box-title">Edit About Image</h3>
-          <a href="{{url()->previous()}}"> <button type="button" class="btn btn-primary" style="float:right">Cancel</button> </a>
+          <a href="{{url('/admin/about-us')}}"> <button type="button" class="btn btn-primary" style="float:right">Cancel</button> </a>
 
           </div>
           <!-- /.box-header -->
@@ -33,7 +33,10 @@
           <input type="hidden" name="id" value="{{$about->id}}">
             <div class="box-body">
               <div class="form-group">
-                <label for="image_about">File input</label>
+                <label for="image_about">Image upload (max 2mb)</label>
+                @if($errors->has('about_us_image'))
+                <br><span class="text-danger">{{$errors->first('about_us_image')}}</span> <br>
+              @endif
               <input type="file" id="image_about" name="about_us_image" onchange="previewFile(this)">
               <img id="previewIMG" alt="preview image" src="{{asset('images')}}/{{$about->about_us_image}}" style="max-width: 200px;margin-top:20px"/>
               </div>

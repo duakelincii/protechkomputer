@@ -21,13 +21,18 @@ class CarouselController extends Controller
 
     public function store(Request $req)
     {
-        $image = $req->file('carousel_url');
+        $req->validate([
+            'heading'=> 'required',
+            'description' => 'required',
+            'image' => 'required|mimes:jpg,jpeg,png |max:2048'
+        ]);
+        $image = $req->file('image');
         $imageName = time().'.'.$image->extension();
         $image->move(public_path('images'),$imageName);
         $carousel = new Carousel;
-        $carousel->carousel_url = $imageName;
-        $carousel->carousel_big = $req->carousel_big;
-        $carousel->carousel_desc = $req->carousel_desc;
+        $carousel->image = $imageName;
+        $carousel->heading = $req->heading;
+        $carousel->description = $req->description;
 
         $carousel->save();
         return redirect('admin/carousel')->with('successadd','New Carousel added successfully');
@@ -42,9 +47,13 @@ class CarouselController extends Controller
 
     public function updateCarousel(Request $req)
     {
+        $req->validate([
+            'heading'=> 'required',
+            'description' => 'required',
+        ]);
         $carousel = Carousel::find($req->id);
-        $carousel->carousel_big = $req->carousel_big;
-        $carousel->carousel_desc = $req->carousel_desc;
+        $carousel->heading = $req->heading;
+        $carousel->description = $req->description;
         $carousel->save();
         return redirect('admin/carousel')->with('successupdate','Carousel updated successfully');
     }
@@ -57,20 +66,23 @@ class CarouselController extends Controller
 
     public function updateCarouselImage(Request $req)
     {
+        $req->validate([
+            'image' => 'required|mimes:jpg,jpeg,png |max:2048'
+        ]);
         $carousel = Carousel::find($req->id);
-        unlink(public_path('images').'/'.$carousel->carousel_url);
-        $image = $req->file('carousel_url');
+        unlink(public_path('images').'/'.$carousel->image);
+        $image = $req->file('image');
         $imageName = time().'.'.$image->extension();
         $image->move(public_path('images'),$imageName);
         
-        $carousel->carousel_url = $imageName;
+        $carousel->image = $imageName;
         $carousel->save();
         return redirect('admin/carousel')->with('successupdateimage','Carousel image updated successfully');
     }
     public function deleteCarousel($id)
     {
         $carousel = Carousel::find($id);
-        unlink(public_path('images').'/'.$carousel->carousel_url);
+        unlink(public_path('images').'/'.$carousel->image);
         $carousel->delete();
         return redirect('admin/carousel')->with('successdelete','Carousel deleted successfully');
     }

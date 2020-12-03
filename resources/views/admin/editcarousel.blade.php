@@ -1,6 +1,6 @@
 @extends('layout.admin_layout')
 @section('main_content')
-@section('title','Edit Carousel')
+@section('title','Edit Carousel Text')
 @section('body','hold-transition skin-blue sidebar-mini')
 <div class="wrapper">
     <x-admin_header />
@@ -22,7 +22,7 @@
         <div class="box box-primary">
           <div class="box-header with-border">
             <h3 class="box-title">Edit Carousel Text</h3>
-            <a href="{{url()->previous()}}"> <button type="button" class="btn btn-primary" style="float:right">Cancel</button> </a>
+            <a href="{{url('/admin/carousel')}}"> <button type="button" class="btn btn-primary" style="float:right">Cancel</button> </a>
 
           </div>
           <!-- /.box-header -->
@@ -33,12 +33,21 @@
           <input type="hidden" name="id" value="{{$carousel->id}}">
             <div class="box-body">
               <div class="form-group">
+              <img id="previewIMG" alt="preview image" src="{{asset('images')}}/{{$carousel->image}}" style="max-width: 200px;margin-top:20px"/>
+              </div>
+              <div class="form-group">
                 <label for="big_carousel">Heading</label>
-              <input type="text" class="form-control" id="big_carousel" placeholder="Enter Big text" value="{{$carousel->carousel_big}}" name="carousel_big">
+              <input type="text" class="form-control" id="big_carousel" placeholder="Enter Big text" value="{{$carousel->heading}}" name="heading">
+              @if($errors->has('heading'))
+              <span class="text-danger">{{$errors->first('heading')}}</span>
+            @endif
               </div>
               <div class="form-group">
                 <label for="desc_carousel">Description </label>
-              <input type="text" class="form-control" id="desc_carousel" placeholder="Enter short description" value="{{$carousel->carousel_desc}}" name="carousel_desc">
+              <input type="text" class="form-control" id="desc_carousel" placeholder="Enter short description" value="{{$carousel->description}}" name="description">
+              @if($errors->has('description'))
+              <span class="text-danger">{{$errors->first('description')}}</span>
+            @endif
             </div>
             </div>
             <!-- /.box-body -->

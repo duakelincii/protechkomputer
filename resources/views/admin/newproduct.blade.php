@@ -22,7 +22,7 @@
         <div class="box box-primary">
           <div class="box-header with-border">
             <h3 class="box-title">New Product</h3>
-            <a href="{{url()->previous()}}"> <button type="button" class="btn btn-primary" style="float:right">Cancel</button> </a>
+            <a href="{{url('/admin/product')}}"> <button type="button" class="btn btn-primary" style="float:right">Cancel</button> </a>
 
           </div>
           <!-- /.box-header -->
@@ -32,7 +32,7 @@
             <div class="box-body">
               <div class="form-group">
                 <label for="name_product">Product Name</label>
-              <input type="text" class="form-control" id="name_product" placeholder="Enter Big text"name="product_name" value="{{ old('product_image') }}">
+              <input type="text" class="form-control" id="name_product" placeholder="Enter Big text"name="product_name" value="{{ old('product_name') }}">
               @if($errors->has('product_name'))
               <span class="text-danger">{{$errors->first('product_name')}}</span>
           @endif
@@ -51,19 +51,19 @@
               </div>
               <div class="form-group">
                 <label for="editor1">Product Description</label>
+                @if($errors->has('product_description'))
+               <br> <span class="text-danger">{{$errors->first('product_description')}}</span>
+            @endif
               <textarea id="editor1" name="product_description" rows="10" cols="80">
                 {{old('product_description')}}
                 </textarea>
-                @if($errors->has('product_description'))
-                <span class="text-danger">{{$errors->first('product_description')}}</span>
-            @endif
             </div>
               <div class="form-group">
                 <label for="image_product">File input</label>
-                <input type="file" id="image_product" name="product_image" onchange="previewFile(this)">
                 @if($errors->has('product_image'))
-                <span class="text-danger">{{$errors->first('product_image')}}</span>
-            @endif
+                <br> <span class="text-danger">{{$errors->first('product_image')}}</span><br>
+             @endif
+                <input type="file" id="image_product" name="product_image" onchange="previewFile(this)">
                 <img id="previewIMG" alt="preview image" style="max-width: 200px;margin-top:20px"/>
 
               </div>

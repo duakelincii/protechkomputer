@@ -22,8 +22,7 @@
         <div class="box box-primary">
           <div class="box-header with-border">
           <h3 class="box-title">Edit Carousel Image</h3>
-          <a href="{{url()->previous()}}"> <button type="button" class="btn btn-primary" style="float:right">Cancel</button> </a>
-
+          <a href="{{url('/admin/carousel')}}"> <button type="button" class="btn btn-primary" style="float:right">Cancel</button> </a>
           </div>
           <!-- /.box-header -->
           <!-- form start -->
@@ -33,9 +32,12 @@
           <input type="hidden" name="id" value="{{$carousel->id}}">
             <div class="box-body">
               <div class="form-group">
-                <label for="url_carousel">File input</label>
-              <input type="file" id="url_carousel" name="carousel_url" onchange="previewFile(this)">
-              <img id="previewIMG" alt="preview image" src="{{asset('images')}}/{{$carousel->carousel_url}}" style="max-width: 200px;margin-top:20px"/>
+                <label for="url_carousel">Carousel Image</label>
+                @if($errors->has('image'))
+                <br><span class="text-danger">{{$errors->first('image')}}</span> <br>
+              @endif
+              <input type="file" id="url_carousel" name="image" onchange="previewFile(this)">
+              <img id="previewIMG" alt="preview image" src="{{asset('images')}}/{{$carousel->image}}" style="max-width: 200px;margin-top:20px"/>
               </div>
             </div>
             <!-- /.box-body -->

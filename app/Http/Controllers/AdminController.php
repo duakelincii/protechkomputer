@@ -32,6 +32,7 @@ class AdminController extends Controller
     }
     function loginAdmin(Request $req)
     {
+
         //arti dari first() itu bakal return only 1 record
         $admin= Admin::where(['admin_email'=>$req->admin_email])->first();
         //Perlu tambah flash session biar misal kalo username password salah muncul errornya
@@ -54,6 +55,10 @@ class AdminController extends Controller
     }
     function updateProfile(Request $req)
     {
+        $req->validate([
+            'admin_name'=> 'required',
+            'admin_email' => 'required',
+        ]);
         $admin = Admin::find($req->id);
         $admin->admin_name = $req->admin_name;
         $admin->admin_email = $req->admin_email;

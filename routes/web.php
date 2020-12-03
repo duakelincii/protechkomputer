@@ -76,7 +76,7 @@ Route::group(['middleware' => ['CheckSession']], function () {
     Route::get('admin/edit-about-home-image/{id}',[AboutController::class,'editAboutHomeImage']);
 
     //admin about us page
-    Route::get('admin/about-text',[AboutController::class,'index']);
+    Route::get('admin/about-us',[AboutController::class,'index']);
     Route::get('admin/edit-about-text/{id}',[AboutController::class,'editAbout']);
     Route::get('admin/edit-about-image/{id}',[AboutController::class,'editAboutImage']);
     //Vision

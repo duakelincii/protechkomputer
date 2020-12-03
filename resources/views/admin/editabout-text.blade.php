@@ -22,7 +22,7 @@
         <div class="box box-primary">
           <div class="box-header with-border">
             <h3 class="box-title">Edit About Text</h3>
-            <a href="{{url()->previous()}}"> <button type="button" class="btn btn-primary" style="float:right">Cancel</button> </a>
+            <a href="{{url('/admin/about-us')}}"> <button type="button" class="btn btn-primary" style="float:right">Cancel</button> </a>
 
           </div>
           <!-- /.box-header -->
@@ -33,7 +33,10 @@
           <input type="hidden" name="id" value="{{$about->id}}">
             <div class="box-body">
               <div class="form-group">
-                <label for="editor1">Heading</label>
+                <label for="editor1">About Us text</label>
+                @if($errors->has('about_us_text'))
+                <br><span class="text-danger">{{$errors->first('about_us_text')}}</span> <br>
+              @endif
                 <textarea id="editor1" name="about_us_text" rows="10" cols="80">
                     {{$about->about_us_text}}
                 </textarea>

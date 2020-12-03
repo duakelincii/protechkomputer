@@ -23,7 +23,7 @@ class CustomerController extends Controller
         $req->validate([
             'customer_name'=> 'required',
             'customer_quote' => 'required',
-            'customer-image' => 'required|mimes:jpg,jpeg,png |max:2048'
+            'customer_image' => 'required|mimes:jpg,jpeg,png |max:2048'
         ]);
         $image = $req->file('customer_image');
         $imageName = time().'.'.$image->extension();
@@ -45,6 +45,10 @@ class CustomerController extends Controller
 
     public function updateCustomer(Request $req)
     {
+        $req->validate([
+            'customer_name'=> 'required',
+            'customer_quote' => 'required',
+        ]);
         $customer = Customer::find($req->id);
         $customer->customer_name = $req->customer_name;
         $customer->customer_quote = $req->customer_quote;
@@ -60,6 +64,9 @@ class CustomerController extends Controller
 
     public function updateCustomerImage(Request $req)
     {
+        $req->validate([
+            'customer_image' => 'required|mimes:jpg,jpeg,png |max:2048'
+        ]);
         $customer = Customer::find($req->id);
         unlink(public_path('images').'/'.$customer->customer_image);
         $image = $req->file('customer_image');

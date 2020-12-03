@@ -22,7 +22,7 @@
         <div class="box box-primary">
           <div class="box-header with-border">
             <h3 class="box-title">Edit Category</h3>
-            <a href="{{url()->previous()}}"> <button type="button" class="btn btn-primary" style="float:right">Cancel</button> </a>
+            <a href="{{url('/admin/category')}}"> <button type="button" class="btn btn-primary" style="float:right">Cancel</button> </a>
 
           </div>
           <!-- /.box-header -->
@@ -35,6 +35,9 @@
               <div class="form-group">
                 <label for="name_category">Category</label>
               <input type="text" class="form-control" id="name_category" placeholder="Enter Big text" value="{{$category->category_name}}" name="category_name">
+              @if($errors->has('category_name'))
+              <span class="text-danger">{{$errors->first('category_name')}}</span>
+            @endif
               </div>
             </div>
             <!-- /.box-body -->

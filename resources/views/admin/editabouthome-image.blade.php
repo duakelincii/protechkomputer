@@ -22,8 +22,7 @@
         <div class="box box-primary">
           <div class="box-header with-border">
           <h3 class="box-title">Edit About Us Home Image</h3>
-          <a href="{{url()->previous()}}"> <button type="button" class="btn btn-primary" style="float:right">Cancel</button> </a>
-
+          <a href="{{url('/admin/about-home')}}"> <button type="button" class="btn btn-primary" style="float:right">Cancel</button> </a>
           </div>
           <!-- /.box-header -->
           <!-- form start -->
@@ -33,10 +32,14 @@
           <input type="hidden" name="id" value="{{$abouthome->id}}">
             <div class="box-body">
               <div class="form-group">
-                <label for="image_abouthome">File input</label>
+                <label for="image_abouthome">Image upload (max 2mb)</label>
+                @if($errors->has('abouthome_image'))
+                  <br><span class="text-danger">{{$errors->first('abouthome_image')}}</span> <br>
+                @endif
               <input type="file" id="image_abouthome" name="abouthome_image" onchange="previewFile(this)">
               <img id="previewIMG" alt="preview image" src="{{asset('images')}}/{{$abouthome->abouthome_image}}" style="max-width: 200px;margin-top:20px"/>
               </div>
+              
             </div>
             <!-- /.box-body -->
 

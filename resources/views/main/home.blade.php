@@ -10,7 +10,7 @@
             @foreach($carousel as $car)
             <li data-transition="fade" data-slotamount="7" data-masterspeed="1000"> 
                 <!-- MAIN IMAGE --> 
-                <img src="{{asset('images')}}/{{$car->carousel_url}}" alt="fullslide6" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat" style="filter: brightness(20%)"> 
+                <img src="{{asset('images')}}/{{$car->image}}" alt="fullslide6" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat" style="filter: brightness(20%)"> 
                 <!-- LAYERS --> 
                 <!-- LAYER NR. 1 -->
                 <div class="tp-caption light_heavy_70_shadowed lfb ltt tp-resizeme main-home"
@@ -25,7 +25,7 @@
                                 data-endelementdelay="0.1"
                                 data-endspeed="500"
                                 data-endeasing="Power4.easeIn"
-                                style="z-index: 2; max-width: auto; max-height: auto; white-space: nowrap;">{{$car['carousel_big']}}</div>
+                                style="z-index: 2; max-width: auto; max-height: auto; white-space: nowrap;">{{$car['heading']}}</div>
                 <!-- LAYER NR. 2 -->
                 <div class="tp-caption light_medium_30 lfb ltt tp-resizeme"
                                 data-x="center" data-hoffset="0"
@@ -39,7 +39,7 @@
                                 data-endelementdelay="0.1"
                                 data-endspeed="500"
                                 data-endeasing="Power4.easeIn"
-                                style="z-index: 3; max-width: auto; max-height: auto; white-space: nowrap;">{{$car['carousel_desc']}} </div>
+                                style="z-index: 3; max-width: auto; max-height: auto; white-space: nowrap;">{{$car['description']}} </div>
 
             </li>
             @endforeach

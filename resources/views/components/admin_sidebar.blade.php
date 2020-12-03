@@ -31,7 +31,7 @@
                 </span>
             </a>
             <ul class="treeview-menu">
-            <li><a href="{{url('admin/about-text')}}">About Us</a></li>
+            <li><a href="{{url('admin/about-us')}}">About Us</a></li>
             <li><a href="{{url('admin/mission')}}">Mission</a></li>
             <li><a href="{{url('admin/vision')}}">Vision</a></li>
             </ul>

@@ -21,8 +21,8 @@
         <!-- general form elements -->
         <div class="box box-primary">
           <div class="box-header with-border">
-            <h3 class="box-title">New Carousel</h3>
-            <a href="{{url()->previous()}}"> <button type="button" class="btn btn-primary" style="float:right">Cancel</button> </a>
+            <h3 class="box-title">New Mission</h3>
+            <a href="{{url('/admin/mission')}}"> <button type="button" class="btn btn-primary" style="float:right">Cancel</button> </a>
 
           </div>
           <!-- /.box-header -->
@@ -32,6 +32,9 @@
             <div class="box-body">
               <div class="form-group">
                 <label for="editor1">Mission</label>
+                @if($errors->has('mission'))
+                <br><span class="text-danger">{{$errors->first('mission')}}</span>
+              @endif
                 <textarea id="editor1" name="mission" rows="10" cols="80">
                 </textarea>
               </div>

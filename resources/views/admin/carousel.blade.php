@@ -61,9 +61,9 @@
               <tbody>
                 @foreach ($carousel as $car)
               <tr>
-                <td>{{$car['carousel_desc']}}</td>
-                <td>{{$car['carousel_big']}}</td>
-              <td align="center"><img src="{{asset('images')}}/{{$car->carousel_url}}" alt="" width="500" height="250"></td>
+                <td>{{$car['heading']}}</td>
+                <td>{{$car['description']}}</td>
+              <td align="center"><img src="{{asset('images')}}/{{$car->image}}" alt="" width="500" height="250"></td>
               <td>                      
                 <a href="{{url('admin/edit-carousel')}}/{{$car->id}}" class="btn btn-small"><i class="fa fa-fw fa-edit"></i> Edit</a>
                 <a href="{{url('admin/edit-carousel-image')}}/{{$car->id}}" class="btn btn-small"><i class="fa fa-fw fa-edit"></i> Edit Image</a>
