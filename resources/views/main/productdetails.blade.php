@@ -58,7 +58,7 @@
                                             @foreach ($related as $rel)
                                             <div class="item">
                                                 <figure class="animated-overlay overlay-alt">
-                                                    <img alt="Nexus"  src="{{asset('images')}}/{{$rel->product_image}}" />
+                                                    <img alt="Nexus"  src="{{asset('images')}}/{{$rel->product_image}}" style="width:200px;height:150px;" />
                                                     <a href="{{url('product-detail/')}}/{{$rel->id}}" class="link-to-post"></a>
                                                     <figcaption>
                                                         <div class="thumb-info thumb-info-v2"><i class="fa fa-angle-right"></i></div>
