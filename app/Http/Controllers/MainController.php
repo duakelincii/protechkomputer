@@ -7,6 +7,7 @@ use App\Models\Carousel;
 use App\Models\Client;
 use App\Models\About;
 use App\Models\Vision;
+use App\Models\Keyword;
 use App\Models\Mission;
 use App\Models\Product;
 use App\Models\Contact;
@@ -25,26 +26,30 @@ class MainController extends Controller
         $carousel = Carousel::get();
         $abouthome = AboutHome::get();
         $customer = Customer::get();
-        return view('main/home',['carousel'=>$carousel,'client'=>$client,'about'=>$about,'abouthome'=>$abouthome,'product'=>$product,'customer'=>$customer]);
+        $keyword  = Keyword::get();
+        return view('main/home',['carousel'=>$carousel,'client'=>$client,'about'=>$about,'abouthome'=>$abouthome,'product'=>$product,'customer'=>$customer,'keyword'=>$keyword]);
     }
+
     function about()
     {
         $client = Client::get();
         $about = About::get();
         $vision = Vision::get();
         $mission = Mission::get();
-
-        return view('main/about',['client'=>$client,'about'=>$about,'vision'=>$vision,'mission'=>$mission]);
+        $keyword  = Keyword::get();
+        return view('main/about',['client'=>$client,'about'=>$about,'vision'=>$vision,'mission'=>$mission,'keyword'=>$keyword]);
     }
+    
     function product()
     {
         $client = Client::get();
+        $keyword  = Keyword::get();
         $category = Category::get();
         $data = DB::table('products')
                 ->join('categories','products.category_id','=','categories.id')
                 ->select('products.*','categories.category_name')
                 ->paginate(6);
-        return view('main/product',['client'=>$client, 'data'=>$data,'category'=>$category]);
+        return view('main/product',['client'=>$client, 'data'=>$data,'category'=>$category,'keyword'=>$keyword]);
     }
 
     

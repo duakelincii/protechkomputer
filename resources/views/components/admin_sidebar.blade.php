@@ -53,6 +53,10 @@
 
         <li><a href="{{url('admin/contact')}}"><i class="fa fa-comments"></i> <span>CONTACT MESSAGES</span></a></li>
 
+        <li class="header">HEADER</li>
+
+        <li><a href="{{route('keyword')}}"><i class="fa fa-comments"></i> <span>KEYWORDS</span></a></li>
+
         </ul>
         <!-- /.sidebar-menu -->
     </section>

@@ -84,6 +84,7 @@ class AdminController extends Controller
         else{
             return redirect('admin/editpassword')->with('error','Incorrect old password, please input your password correctly');
         }
-
     }
+
+    
 }

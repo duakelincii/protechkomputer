@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\About;
 use App\Models\Vision;
 use App\Models\Mission;
+use App\Models\Keyword;
 use App\Models\AboutHome;
 class AboutController extends Controller
 {
@@ -44,6 +45,7 @@ class AboutController extends Controller
         $abouthome->save();
         return redirect('admin/about-home')->with('successabouthome','Text updated successfully');
     }
+    
     public function updateAboutHomeImage(Request $req)
     {
         $req->validate([
@@ -87,6 +89,7 @@ class AboutController extends Controller
         $about->save();
         return redirect('admin/about-us')->with('successimage','Image updated successfully');
     }
+
     public function updateAbout(Request $req)
     {
         $req->validate([
@@ -187,4 +190,29 @@ class AboutController extends Controller
         $mission->delete();
         return redirect('admin/mission')->with('successdelete','Mission Successfully Deleted');
     }
+
+    public function keyword()
+    {
+        $datas = Keyword::get();
+        return view('admin.keyword',compact('datas'));
+    }
+
+    public function editkeyword($id)
+    {
+        $data = Keyword::find($id);
+        return view('admin.editkeywords',compact('data'));
+    }
+
+    public function updatekeyword(Request $request)
+    {
+        $request->validate([
+            'text_key'   => 'required'
+        ]);
+
+        $keyword = Keyword::find($request->id);
+        $keyword->text_key = $request->text_key;
+        $keyword->save();
+        return redirect('admin/keyword')->with('successkeyword','Keyword updated successfully');
+    }
+
 }

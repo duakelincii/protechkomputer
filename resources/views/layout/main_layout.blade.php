@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <title>Nexus - @yield('title')</title>
-<meta name="keywords" content="HTML5 Template" />
+<meta name="keywords" content="@yield('keyword')" />
 <meta name="description" content="Nexus">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <link rel="shortcut icon" type="image/png" href="{{asset('assets/main/img/favicon.png')}}" />

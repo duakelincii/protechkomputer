@@ -9,10 +9,10 @@
             <!--Main Menu-->
             <nav class="nav-main mega-menu">
                 <ul class="nav nav-pills nav-main" id="mainMenu">
-                    <li class="{{Request::is('/') ? 'active':''}}"> <a href="/">Home </a></li>
-                    <li class="{{Request::is('about') ? 'active':''}}"> <a href="/about">About </a></li>
-                    <li class="{{Request::is('product') ? 'active':''}}"> <a href="/product">Product </a></li>
-                    <li class="{{Request::is('contact') ? 'active':''}}"> <a href="/contact">Contact Us </a> </li>
+                    <li class="{{Request::is('/') ? 'active':''}}"> <a href="{{ route('home') }}">Home </a></li>
+                    <li class="{{Request::is('about') ? 'active':''}}"> <a href="{{route('about')}}">About </a></li>
+                    <li class="{{Request::is('product') ? 'active':''}}"> <a href="{{ route('product') }}">Product </a></li>
+                    <li class="{{Request::is('contact') ? 'active':''}}"> <a href="{{ route('contact') }}">Contact Us </a> </li>
                 </ul>
             </nav>
             <!--End Main Menu--> 

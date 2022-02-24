@@ -1,4 +1,5 @@
 @extends('layout.main_layout')
+@section('keyword','protech')
 @section('title','Home')
 @section('main_content')
 <div id="container"> 

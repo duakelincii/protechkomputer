@@ -23,10 +23,10 @@ use App\Http\Controllers\CustomerController;
 */
 
 
-Route::get('/',[MainController::class,'index']);
-Route::get('about',[MainController::class,'about']);
-Route::get('product',[MainController::class,'product']);
-Route::get('contact',[ContactController::class,'index']);
+Route::get('/',[MainController::class,'index'])->name('home');
+Route::get('about',[MainController::class,'about'])->name('about');
+Route::get('product',[MainController::class,'product'])->name('product');
+Route::get('contact',[ContactController::class,'index'])->name('contact');
 Route::post('contact',[ContactController::class,'storeContactForm'])->name('contact.store');
 Route::get('product-detail/{id}',[ProductDetailController::class,'displayProduct']);
 
@@ -74,6 +74,11 @@ Route::group(['middleware' => ['CheckSession']], function () {
     Route::get('admin/about-home',[AboutController::class,'viewAboutHome']);
     Route::get('admin/edit-about-home-text/{id}',[AboutController::class,'editAboutHome']);
     Route::get('admin/edit-about-home-image/{id}',[AboutController::class,'editAboutHomeImage']);
+
+    //admin keyword
+    Route::get('admin/keyword',[AboutController::class,'keyword'])->name('keyword');
+    Route::get('admin/keyword/edit/{id}',[AboutController::class ,'editkeyword'])->name('edit.keyword');
+    Route::post('admin/keyword/update',[AboutController::class ,'updatekeyword'])->name('update.keyword');
 
     //admin about us page
     Route::get('admin/about-us',[AboutController::class,'index']);
